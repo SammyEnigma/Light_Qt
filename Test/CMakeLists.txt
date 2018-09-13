@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5.0)
 
 #Project name
-project(Light_Qt)
+project(Light_Qt_Test)
 
 #setup qt
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -33,22 +33,19 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_NAME}${ARC
 #setup include and linking directories
 include_directories(inc
                     )
+                    
 
 #setup source files
-set(src src/Light.cpp
+set(src main.cpp
         )
         
 #setup header files
-set(include inc/Light.h
+set(include 
             )
             
 #create the library
-add_library(${PROJECT_NAME} ${src} ${include})
+add_executable(${PROJECT_NAME} ${src} ${include})
 
 #linking
-target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
-
-set(BUILD_TEST true)
-if(BUILD_TEST)
-  add_subdirectory(Test)
-endif(BUILD_TEST)
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets
+                                      Light_Qt)
