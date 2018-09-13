@@ -19,12 +19,26 @@ void Light::init(bool on, const QColor& onColor, const QColor& offColor)
 //event handlers
 void Light::paintEvent(QPaintEvent* e)
 {
-  QBrush brush;
-  brush.setColor(m_on ? m_onColor : m_offColor);
-  QPainter painter(this);
-  painter.setBrush(brush);
+  std::cout << "paint event" << std::endl;
+  //QPainter painter(this);
+  //QPainterPath path;
+  //path.addEllipse(rect());
+  //QBrush brush;
+  //auto color = m_on ? m_onColor : m_offColor;
+  //brush.setColor(color);
+  //painter.setBrush(brush);
+  //painter.drawPath(path);
+  //painter.fillPath(path, brush);
+  QLinearGradient myGradient;
+  QPen myPen;
 
-  painter.drawText(rect(), Qt::AlignCenter, "Test");
+  QPainterPath myPath;
+  myPath.addEllipse(rect());
+
+  QPainter painter(this);
+  painter.setBrush(myGradient);
+  painter.setPen(myPen);
+  painter.drawPath(myPath);
 }
 
 //constructors
@@ -75,8 +89,10 @@ void Light::setOffColor(int r, int g, int b)
 void Light::turnOn()
 {
   m_on = true;
+  repaint();
 }
 void Light::turnOff()
 {
   m_on = false;
+  repaint();
 }

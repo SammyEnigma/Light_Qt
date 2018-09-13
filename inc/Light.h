@@ -7,7 +7,9 @@
 
 //TEMP
 #include <qpainter.h>
+#include <qpainterpath.h>
 #include <qbrush.h>
+#include <iostream>
 
 class Light : public QWidget
 {
