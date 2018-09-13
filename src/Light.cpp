@@ -3,6 +3,10 @@
 //private functions
 void Light::init(bool on, const QColor& onColor, const QColor& offColor)
 {
+  setOnColor(onColor);
+  setOffColor(offColor);
+
+  //should happen after the colors have been set, so inital draw is the correct color
   if (on)
   {
     turnOn();
@@ -11,34 +15,26 @@ void Light::init(bool on, const QColor& onColor, const QColor& offColor)
   {
     turnOff();
   } //end  else
-
-  setOnColor(onColor);
-  setOffColor(offColor);
 }
 
 //event handlers
 void Light::paintEvent(QPaintEvent* e)
 {
   std::cout << "paint event" << std::endl;
-  //QPainter painter(this);
-  //QPainterPath path;
-  //path.addEllipse(rect());
-  //QBrush brush;
-  //auto color = m_on ? m_onColor : m_offColor;
-  //brush.setColor(color);
-  //painter.setBrush(brush);
-  //painter.drawPath(path);
-  //painter.fillPath(path, brush);
-  QLinearGradient myGradient;
-  QPen myPen;
 
-  QPainterPath myPath;
-  myPath.addEllipse(rect());
+  //figure out what color to use based on current light state
+  auto color = m_on ? m_onColor : m_offColor;
 
+  //generate the circle to be drawn
+  QPainterPath path;
+  path.moveTo(80.0, 50.0);
+  path.addEllipse(rect());
+
+  //create the painter to draw the circle
   QPainter painter(this);
-  painter.setBrush(myGradient);
-  painter.setPen(myPen);
-  painter.drawPath(myPath);
+  painter.setPen(QPen(color));
+  painter.setBrush(QBrush(color));
+  painter.drawPath(path);
 }
 
 //constructors
