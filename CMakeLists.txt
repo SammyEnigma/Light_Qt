@@ -48,7 +48,7 @@ add_library(${PROJECT_NAME} ${src} ${include})
 #linking
 target_link_libraries(${PROJECT_NAME} Qt5::Widgets)
 
-set(BUILD_TEST true)
+set(BUILD_TEST false)
 if(BUILD_TEST)
   add_subdirectory(Test)
 endif(BUILD_TEST)
