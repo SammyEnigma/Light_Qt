@@ -13,6 +13,8 @@
 
 class Light : public QWidget
 {
+  Q_OBJECT
+
 private:
   //member data
   QColor m_onColor;
