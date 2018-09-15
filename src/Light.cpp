@@ -20,8 +20,6 @@ void Light::init(bool on, const QColor& onColor, const QColor& offColor)
 //event handlers
 void Light::paintEvent(QPaintEvent* e)
 {
-  std::cout << "paint event" << std::endl;
-
   //figure out what color to use based on current light state
   auto color = m_on ? m_onColor : m_offColor;
 
