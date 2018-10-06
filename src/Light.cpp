@@ -82,11 +82,19 @@ void Light::setOffColor(int r, int g, int b)
 //public slots
 void Light::turnOn()
 {
-  m_on = true;
-  repaint();
+  //if m is not on, turn it on, otherwise ignore
+  if (!m_on)
+  {
+    m_on = true;
+    repaint();
+  } //end  if (!m_on
 }
 void Light::turnOff()
 {
-  m_on = false;
-  repaint();
+  //if m is on, turn it off. otherwise ignore
+  if (m_on)
+  {
+    m_on = false;
+    repaint();
+  }
 }
