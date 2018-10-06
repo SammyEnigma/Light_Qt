@@ -87,6 +87,7 @@ void Light::turnOn()
   {
     m_on = true;
     repaint();
+    emit stateChanged(true);
   } //end  if (!m_on
 }
 void Light::turnOff()
@@ -96,5 +97,6 @@ void Light::turnOff()
   {
     m_on = false;
     repaint();
+    emit stateChanged(false);
   }
 }
